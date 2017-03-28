@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -12,7 +11,6 @@ class UserController extends Controller
     {
         $x_auth_session = $_SERVER['HTTP_X_AUTH_SESSION'] ?? $_REQUEST['x_auth_session'] ?? null;
 
-
         return [
             'user_id' => Auth::id(),
             'session.id' => Session()->getId(),
@@ -20,7 +18,7 @@ class UserController extends Controller
             'cookie.laravel_session' => $_COOKIE['laravel_session'] ?? null,
             'session.token' => Session()->get('_token'),
             'session_all' => Session()->all(),
-
+            'cookie' => $request->cookie(),
         ];
     }
 }

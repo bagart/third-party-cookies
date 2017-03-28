@@ -1,10 +1,14 @@
 #Third Party Cookies
 
 Auth with blocked 3-rd party cookie in iframe (Safari, Ios)
-with Laravel (Optional)
+Implement on native JavaScript
+with
+- Laravel (optional)
+- Docker (optional)
 
-Implement with iframe.postMessage
-    
+
+
+
 ##Not work:
 - Laravel Session
 
@@ -13,6 +17,8 @@ Implement with iframe.postMessage
 ```
 echo 10.0.75.1 project3rdparty.local >> /etc/hosts
 echo 10.0.75.1 projectname.local >> /etc/hosts
+
+#sudo apt install docker git
 
 git clone https://bagart@bitbucket.org/dse1/third-party-cookies.git
 cd third-party-cookies
@@ -43,3 +49,4 @@ cmd/stop.sh
  
 - https://github.com/bagart/laradock_env
 - https://github.com/laravel/laravel
+- Docker
