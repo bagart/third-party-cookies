@@ -4,7 +4,7 @@ Auth wirh blocked 3-rd party cookie in iframe (Safari, Ios)
 with Laravel (Optional)
 
 ##Install
-```$bash
+```
 echo 10.0.75.1 project3rdparty.local >> /etc/hosts
 echo 10.0.75.1 projectname.local >> /etc/hosts
 
@@ -18,7 +18,7 @@ php artuisan migrate
 ```
 
 ##Stop
-```$bash
+```
 cmd/stop.sh
 ```
 
