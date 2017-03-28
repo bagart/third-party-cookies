@@ -9,6 +9,8 @@ cat workspace/Dockerfile.append >> workspace/Dockerfile
 #sed -i -e 's/^\s*memory_limit.*/memory_limit = 500M/' php-fpm/laravel.ini
 #sed -i -e 's/^\s*post_max_size.*/post_max_size = 100M/' php-fpm/laravel.ini
 
+sed -i -e 's/^\s*xdebug.remote_enable.*/xdebug.remote_enable=on/' php-fpm/xdebug.ini
+sed -i -e 's/^\s*xdebug.remote_enable.*/xdebug.remote_enable=on/' workspace/xdebug.ini
 
 #fix version
 #sed -i -e 's/^\s*FROM elasticsearch.*/FROM elasticsearch:2.4.0/' elasticsearch/Dockerfile

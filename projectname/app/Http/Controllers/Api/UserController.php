@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $x_auth_session = $_SERVER['HTTP_X_AUTH_SESSION'] ?? $_REQUEST['x_auth_session'] ?? null;
-
+        
         return [
             'user_id' => Auth::id(),
             'session.id' => Session()->getId(),
