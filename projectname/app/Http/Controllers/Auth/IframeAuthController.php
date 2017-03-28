@@ -23,7 +23,7 @@ class IframeAuthController extends Controller
                 true
             )
         ) {
-            return view('login');
+            return view('auth.login');
         }
         return view('home');
     }
