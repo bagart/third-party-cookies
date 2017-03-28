@@ -1,7 +1,13 @@
 #Third Party Cookies
 
-Auth wirh blocked 3-rd party cookie in iframe (Safari, Ios)
+Auth with blocked 3-rd party cookie in iframe (Safari, Ios)
 with Laravel (Optional)
+
+    Implement with iframe.postMessage
+    
+##Not work:
+- Laravel Session
+
 
 ##Install
 ```
@@ -16,6 +22,13 @@ cmd/install.sh
 composer install
 php artuisan migrate
 ```
+
+#Run
+```
+#only after stop
+cmd/up.sh
+```
+http://project3rdparty.local
 
 ##Stop
 ```
