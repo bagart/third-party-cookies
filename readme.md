@@ -6,13 +6,6 @@ with
 - Laravel (optional)
 - Docker (optional)
 
-
-
-
-##Not work:
-- Laravel Session
-
-
 ##Install
 ```
 echo 10.0.75.1 project3rdparty.local >> /etc/hosts
@@ -37,7 +30,7 @@ cmd/install.sh
 #connect to workspace container, if needed
 #cmd/conn-workspace.sh
 ```
-http://project3rdparty.local
+http://project3rdparty.local/3rd/
 
 
 ##Stop

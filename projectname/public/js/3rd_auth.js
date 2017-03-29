@@ -33,9 +33,9 @@ var X_AUTH = {
             this.onMessageEvent
         );
 
-        if (window[this.x_cookie_name]) {
-            this.x_auth = window[this.x_cookie_name];
-            delete window[this.x_cookie_name];//For prevent confuse
+        if (document[this.x_cookie_name]) {
+            this.x_auth = document[this.x_cookie_name];
+            delete document[this.x_cookie_name];//For prevent confuse
         } else if (this.cookie(this.x_cookie_name)) {
             this.x_auth = JSON.parse(this.cookie(this.x_cookie_name));
         }

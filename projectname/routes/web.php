@@ -29,7 +29,7 @@ Route::any('/iframe_auth', 'Auth\IframeAuthController@index');
 Route::any('/api/auth', 'Api\AuthController@index');
 
 //just for test
-Route::any('/api/user', 'Api\UserController@index');
+Route::any('/api/user_check', 'Api\UserCheckController@index');
 
 //replace default
 Route::post('/login', 'Auth\IframeAuthController@index');

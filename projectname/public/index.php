@@ -4,7 +4,6 @@ if (!$_COOKIE && $_SERVER['HTTP_X_AUTH_SESSION'] ?? $_REQUEST['x_auth_session'] 
     $_COOKIE['laravel_session'] = $_SERVER['HTTP_X_AUTH_SESSION'] ?? $_REQUEST['x_auth_session'] ?? null;
 }
 
-
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

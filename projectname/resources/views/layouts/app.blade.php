@@ -85,16 +85,26 @@
 
 
     <script src="{{ asset('js/3rd_auth.js') }}"></script>
-    <script src="{{ asset('js/iframe_auth.js') }}"></script>
+    <script src="{{ asset('js/3rd_main.js') }}"></script>
+    {!! json_encode(
+                    \Illuminate\Support\Facades\Auth::id()
+                    ?[
+                        'user_id' => Auth()->id(),
+                        'user_name' => Auth()->id() ? Auth()->user()->name : null,
+                        'x_auth_token' => Session()->get('_token'),
+                        'x_auth_session' => $app->make(\Illuminate\Encryption\Encrypter::class)->encrypt(Session()->getId()),
+                    ]
+                    : null
+                ) !!}
     <script>
-        window[X_AUTH && X_AUTH.x_cookie_name ? X_AUTH.x_cookie_name : 'x_auth_param']
+        document[X_AUTH && X_AUTH.x_cookie_name ? X_AUTH.x_cookie_name : 'x_auth_param']
             = {!! json_encode(
-                Auth::id()
+                \Illuminate\Support\Facades\Auth::id()
                 ?[
-                    'user_id' => Auth::id(),
-                    'user_name' => Auth::id() ? Auth::user()->name : null,
+                    'user_id' => Auth()->id(),
+                    'user_name' => Auth()->id() ? Auth()->user()->name : null,
                     'x_auth_token' => Session()->get('_token'),
-                    'x_auth_session' => Session()->getId(),
+                    'x_auth_session' => $app->make(\Illuminate\Encryption\Encrypter::class)->encrypt(Session()->getId()),
                 ]
                 : null
             ) !!};
