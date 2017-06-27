@@ -2,6 +2,7 @@ var X_AUTH = {
     target: parent,
     is_dbg: false,
     x_auth: null,
+    ajax_param_switch: 'header', //header|post|get
     x_cookie_name: 'x_auth_param',
     origins_regexp: [],
     action_callback: {
@@ -146,5 +147,67 @@ var X_AUTH = {
         for (var i=0; i < X_AUTH.action_callback[type].length; ++i) {
             X_AUTH.action_callback[type][i](param)
         }
-    }
+    },
+
+    //iframe-side
+    ajax_param: function(param) {
+        if (!X_AUTH.x_auth || !X_AUTH.x_auth.x_auth_session) {
+            X_AUTH.dbg('!x_auth', X_AUTH.x_auth);
+            return param;
+        }
+
+        if (typeof param == 'string') {
+            param = {url:param};
+        }
+        if (!X_AUTH.x_auth.x_auth_session) {
+            return param
+        }
+        param = X_AUTH.ajax_param_header(param);
+
+        switch (X_AUTH.ajax_param_switch) {
+            case 'get':
+                param = X_AUTH.ajax_param_get(param);
+                break;
+            case 'post':
+                param = X_AUTH.ajax_param_post(param);
+                break;
+            case 'head':
+            case 'header':
+            default:
+                //already
+                break;
+        }
+
+        return param;
+    },
+
+    ajax_param_header: function(param) {
+        param.headers = {
+            'x-auth-session': X_AUTH.x_auth.x_auth_session
+        };
+
+        return param;
+    },
+
+    ajax_param_get: function(param) {
+        if (!param.url) {
+            console.log('wrong ajax param', param);
+            return;
+        }
+        param.url += (param.url.match(/\?/) ? '&' : '?')
+            + 'x_auth_session='
+            + encodeURIComponent(X_AUTH.x_auth.x_auth_session);
+
+        return param;
+    },
+
+    ajax_param_post: function(param) {
+        param.method = 'POST';
+        if (!param.data) {
+            param.data = {};
+        }
+        param.data.x_auth_session = X_AUTH.x_auth.x_auth_session;
+
+        return param;
+    },
 };
