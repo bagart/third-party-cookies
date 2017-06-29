@@ -19,7 +19,7 @@ cmd/install.sh
 
 #build Laravel if needed
 #composer install
-#php artuisan migrate
+#php artisan migrate
 ```
 
 #Run
